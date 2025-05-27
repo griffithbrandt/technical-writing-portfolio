@@ -1,0 +1,172 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" font-size="24" font-weight="bold">VESTA System Connectivity Diagram</text>
+  <text x="500" y="55" text-anchor="middle" font-size="14" fill="#666">Data Flow and Integration Architecture</text>
+  
+  <!-- Raspberry Pi Central Hub -->
+  <g id="rpi">
+    <rect x="350" y="300" width="300" height="200" rx="10" fill="#2C3E50" stroke="#34495E" stroke-width="3"/>
+    <text x="500" y="330" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Raspberry Pi 5</text>
+    <text x="500" y="350" text-anchor="middle" font-size="14" fill="#ECF0F1">Central Processing Unit</text>
+    
+    <!-- Internal components -->
+    <rect x="370" y="370" width="120" height="40" rx="5" fill="#34495E"/>
+    <text x="430" y="395" text-anchor="middle" font-size="12" fill="white">CPU: ARM v8</text>
+    
+    <rect x="510" y="370" width="120" height="40" rx="5" fill="#34495E"/>
+    <text x="570" y="395" text-anchor="middle" font-size="12" fill="white">RAM: 8GB</text>
+    
+    <rect x="370" y="420" width="120" height="40" rx="5" fill="#34495E"/>
+    <text x="430" y="445" text-anchor="middle" font-size="12" fill="white">Storage: 32GB</text>
+    
+    <rect x="510" y="420" width="120" height="40" rx="5" fill="#34495E"/>
+    <text x="570" y="445" text-anchor="middle" font-size="12" fill="white">GPIO: 40-pin</text>
+  </g>
+  
+  <!-- Audio Input -->
+  <g id="audio-input">
+    <rect x="50" y="200" width="200" height="120" rx="10" fill="#3498DB" stroke="#2980B9" stroke-width="2"/>
+    <text x="150" y="225" text-anchor="middle" font-size="16" fill="white" font-weight="bold">Audio Input</text>
+    <text x="150" y="245" text-anchor="middle" font-size="12" fill="white">MEMS Microphones</text>
+    <rect x="70" y="260" width="160" height="25" rx="5" fill="#2980B9"/>
+    <text x="150" y="277" text-anchor="middle" font-size="11" fill="white">INMP441 x2</text>
+    <text x="150" y="305" text-anchor="middle" font-size="10" fill="white">Protocol: I2S @ 44.1kHz</text>
+  </g>
+  
+  <!-- Connection: Audio to Pi -->
+  <g id="i2s-connection">
+    <path d="M 250 260 L 350 380" stroke="#3498DB" stroke-width="3" fill="none" marker-end="url(#arrowblue)"/>
+    <text x="300" y="310" text-anchor="middle" font-size="12" fill="#3498DB" transform="rotate(-45 300 310)">I2S Bus</text>
+    <text x="300" y="325" text-anchor="middle" font-size="10" fill="#666" transform="rotate(-45 300 325)">3 wires</text>
+  </g>
+  
+  <!-- Touch Sensor -->
+  <g id="touch-sensor">
+    <rect x="50" y="350" width="200" height="100" rx="10" fill="#9B59B6" stroke="#8E44AD" stroke-width="2"/>
+    <text x="150" y="375" text-anchor="middle" font-size="16" fill="white" font-weight="bold">Touch Interface</text>
+    <text x="150" y="395" text-anchor="middle" font-size="12" fill="white">MPR121 Sensor</text>
+    <text x="150" y="415" text-anchor="middle" font-size="10" fill="white">12 capacitive channels</text>
+    <text x="150" y="435" text-anchor="middle" font-size="10" fill="white">Protocol: I2C @ 100kHz</text>
+  </g>
+  
+  <!-- Connection: Touch to Pi -->
+  <g id="i2c-connection">
+    <path d="M 250 400 L 350 420" stroke="#9B59B6" stroke-width="3" fill="none" marker-end="url(#arrowpurple)"/>
+    <text x="300" y="405" text-anchor="middle" font-size="12" fill="#9B59B6">I2C Bus</text>
+  </g>
+  
+  <!-- LED Output -->
+  <g id="led-output">
+    <rect x="50" y="500" width="200" height="100" rx="10" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+    <text x="150" y="525" text-anchor="middle" font-size="16" fill="white" font-weight="bold">LED Ring</text>
+    <text x="150" y="545" text-anchor="middle" font-size="12" fill="white">WS2812B Strip</text>
+    <text x="150" y="565" text-anchor="middle" font-size="10" fill="white">60 RGB LEDs</text>
+    <text x="150" y="585" text-anchor="middle" font-size="10" fill="white">Protocol: Single Wire</text>
+  </g>
+  
+  <!-- Connection: Pi to LED -->
+  <g id="gpio-led-connection">
+    <path d="M 350 460 L 250 540" stroke="#E74C3C" stroke-width="3" fill="none" marker-start="url(#arrowred)"/>
+    <text x="300" y="495" text-anchor="middle" font-size="12" fill="#E74C3C" transform="rotate(45 300 495)">GPIO 21</text>
+  </g>
+  
+  <!-- Audio Output -->
+  <g id="audio-output">
+    <rect x="750" y="300" width="200" height="140" rx="10" fill="#16A085" stroke="#138871" stroke-width="2"/>
+    <text x="850" y="325" text-anchor="middle" font-size="16" fill="white" font-weight="bold">Audio Output</text>
+    <rect x="770" y="340" width="160" height="30" rx="5" fill="#138871"/>
+    <text x="850" y="360" text-anchor="middle" font-size="12" fill="white">USB DAC</text>
+    <rect x="770" y="380" width="160" height="30" rx="5" fill="#138871"/>
+    <text x="850" y="400" text-anchor="middle" font-size="12" fill="white">Amplifier: 2.5W x2</text>
+    <text x="850" y="425" text-anchor="middle" font-size="10" fill="white">Speakers: 40mm 4Ω</text>
+  </g>
+  
+  <!-- Connection: Pi to Audio Out -->
+  <g id="usb-connection">
+    <path d="M 650 400 L 750 370" stroke="#16A085" stroke-width="3" fill="none" marker-end="url(#arrowgreen)"/>
+    <text x="700" y="380" text-anchor="middle" font-size="12" fill="#16A085">USB 2.0</text>
+  </g>
+  
+  <!-- Power System -->
+  <g id="power">
+    <rect x="400" y="550" width="200" height="80" rx="10" fill="#F39C12" stroke="#D68910" stroke-width="2"/>
+    <text x="500" y="575" text-anchor="middle" font-size="16" fill="white" font-weight="bold">Power Supply</text>
+    <text x="500" y="595" text-anchor="middle" font-size="12" fill="white">USB-C PD: 27W</text>
+    <text x="500" y="615" text-anchor="middle" font-size="10" fill="white">5V @ 5A max</text>
+  </g>
+  
+  <!-- Connection: Power to Pi -->
+  <path d="M 500 550 L 500 500" stroke="#F39C12" stroke-width="4" fill="none" marker-end="url(#arroworange)"/>
+  
+  <!-- Cloud Services -->
+  <g id="cloud">
+    <ellipse cx="500" cy="120" rx="180" ry="60" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="2"/>
+    <text x="500" y="100" text-anchor="middle" font-size="16" font-weight="bold">Cloud Services</text>
+    
+    <rect x="380" y="110" width="100" height="30" rx="5" fill="#3498DB"/>
+    <text x="430" y="130" text-anchor="middle" font-size="12" fill="white">OpenAI API</text>
+    
+    <rect x="520" y="110" width="100" height="30" rx="5" fill="#E74C3C"/>
+    <text x="570" y="130" text-anchor="middle" font-size="12" fill="white">Google TTS</text>
+  </g>
+  
+  <!-- Connection: Pi to Cloud -->
+  <g id="network">
+    <path d="M 500 300 L 500 180" stroke="#95A5A6" stroke-width="3" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowgray)"/>
+    <text x="520" y="240" font-size="12" fill="#7F8C8D">HTTPS</text>
+    <text x="520" y="255" font-size="10" fill="#95A5A6">WiFi/Ethernet</text>
+  </g>
+  
+  <!-- Data Flow Legend -->
+  <g id="legend" transform="translate(50, 680)">
+    <rect x="0" y="0" width="900" height="80" rx="5" fill="#F8F9FA" stroke="#E9ECEF" stroke-width="1"/>
+    <text x="10" y="20" font-size="14" font-weight="bold">Data Flow Types:</text>
+    
+    <line x1="10" y1="40" x2="50" y2="40" stroke="#3498DB" stroke-width="3"/>
+    <text x="60" y="45" font-size="12">Digital Audio (I2S)</text>
+    
+    <line x1="200" y1="40" x2="240" y2="40" stroke="#9B59B6" stroke-width="3"/>
+    <text x="250" y="45" font-size="12">Control (I2C)</text>
+    
+    <line x1="350" y1="40" x2="390" y2="40" stroke="#E74C3C" stroke-width="3"/>
+    <text x="400" y="45" font-size="12">LED Data</text>
+    
+    <line x1="500" y1="40" x2="540" y2="40" stroke="#16A085" stroke-width="3"/>
+    <text x="550" y="45" font-size="12">USB Audio</text>
+    
+    <line x1="650" y1="40" x2="690" y2="40" stroke="#F39C12" stroke-width="4"/>
+    <text x="700" y="45" font-size="12">Power</text>
+    
+    <line x1="10" y1="60" x2="50" y2="60" stroke="#95A5A6" stroke-width="3" stroke-dasharray="5,5"/>
+    <text x="60" y="65" font-size="12">Network</text>
+  </g>
+  
+  <!-- Bandwidth/Timing annotations -->
+  <g id="annotations">
+    <text x="150" y="180" text-anchor="middle" font-size="10" fill="#666">Latency: 50ms</text>
+    <text x="850" y="280" text-anchor="middle" font-size="10" fill="#666">Latency: 10ms</text>
+    <text x="500" y="210" text-anchor="middle" font-size="10" fill="#666">API: 1-3s</text>
+  </g>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowblue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" fill="#3498DB">
+      <polygon points="0 0, 10 3.5, 0 7"/>
+    </marker>
+    <marker id="arrowpurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" fill="#9B59B6">
+      <polygon points="0 0, 10 3.5, 0 7"/>
+    </marker>
+    <marker id="arrowred" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto" fill="#E74C3C">
+      <polygon points="10 0, 0 3.5, 10 7"/>
+    </marker>
+    <marker id="arrowgreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" fill="#16A085">
+      <polygon points="0 0, 10 3.5, 0 7"/>
+    </marker>
+    <marker id="arroworange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" fill="#F39C12">
+      <polygon points="0 0, 10 3.5, 0 7"/>
+    </marker>
+    <marker id="arrowgray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" fill="#95A5A6">
+      <polygon points="0 0, 10 3.5, 0 7"/>
+    </marker>
+  </defs>
+</svg>
