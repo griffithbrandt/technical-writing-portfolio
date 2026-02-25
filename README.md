@@ -6,7 +6,7 @@
 
 ## About Me
 
-I'm an Embedded Systems Engineering student with a unique background in Cinema Studies, allowing me to create technical documentation that is both accurate and visually engaging. Currently seeking a Technical Editor internship where I can help bridge the gap between complex engineering concepts and clear, actionable documentation.
+I'm an Embedded Systems Engineering student with a unique background in Cinema Studies, allowing me to create technical documentation that is both accurate and visually engaging.
 
 ## Portfolio Highlights
 
